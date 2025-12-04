@@ -35,14 +35,42 @@ class QuoteController extends GetxController {
 
   final Random _random = Random();
 
-  /// Get a random quote
+  // Track which quotes have been shown
+  final List<int> _usedIndices = [];
+
+  /// Get a random quote that hasn't been shown yet
   void getRandomQuote() {
-    final index = _random.nextInt(_quotes.length);
-    _currentQuote.value = _quotes[index];
+    // If all quotes have been shown, reset
+    if (_usedIndices.length >= _quotes.length) {
+      _usedIndices.clear();
+    }
+
+    // Get list of available (unused) indices
+    final availableIndices = <int>[];
+    for (int i = 0; i < _quotes.length; i++) {
+      if (!_usedIndices.contains(i)) {
+        availableIndices.add(i);
+      }
+    }
+
+    // Pick a random quote from available ones
+    final randomIndex = _random.nextInt(availableIndices.length);
+    final selectedIndex = availableIndices[randomIndex];
+
+    // Mark this quote as used
+    _usedIndices.add(selectedIndex);
+
+    // Set the current quote
+    _currentQuote.value = _quotes[selectedIndex];
   }
 
   /// Clear the current quote
   void clearQuote() {
     _currentQuote.value = '';
+  }
+
+  /// Reset all shown quotes (optional - user can call this to start fresh)
+  void resetShownQuotes() {
+    _usedIndices.clear();
   }
 }
