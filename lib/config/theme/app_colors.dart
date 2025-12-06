@@ -16,9 +16,9 @@ class AppColors {
   static const Color heinzGreenLight = Color(0xFF79A57A);
 
   // Light Theme Colors
-  static const Color lightBackground = Color(0xFFFFF9F4);
-  static const Color lightSurface = Color(0xFFFFFFFF);
-  static const Color lightCardBackground = Color(0xFFFFFBF5);
+  static const Color lightBackground = Color(0xFFF4F5F7); // Milky cool gray
+  static const Color lightSurface = Color(0xFFFAFBFC); // Soft milky white
+  static const Color lightCardBackground = Color(0xFFF8F9FA); // Light milky
   static const Color lightTextPrimary = Color(0xFF1A1A1A);
   static const Color lightTextSecondary = Color(0xFF666666);
 

@@ -6,18 +6,19 @@ import 'package:get_storage/get_storage.dart';
 class ThemeController extends GetxController {
   // GetStorage instance for persistence
   final _storage = GetStorage();
-  
+
   // Storage key for theme mode
   static const String _themeKey = 'isDarkMode';
-  
+
   // Observable for dark mode state
-  final _isDarkMode = false.obs;
-  
+  final _isDarkMode = true.obs;
+
   /// Whether dark mode is enabled
   bool get isDarkMode => _isDarkMode.value;
-  
+
   /// Current theme mode
-  ThemeMode get themeMode => _isDarkMode.value ? ThemeMode.dark : ThemeMode.light;
+  ThemeMode get themeMode =>
+      _isDarkMode.value ? ThemeMode.dark : ThemeMode.light;
 
   @override
   void onInit() {
